@@ -5,5 +5,6 @@ ENV PATH=${PATH}:/home/ghc/.cabal/bin:/opt/ghc/9.2.2/bin
 RUN sudo apt update && sudo apt install -y bash-completion ripgrep
 RUN git clone -j8 --recurse-submodules https://gitlab.haskell.org/ghc/ghc.git && cd ghc && git reset --hard $GHC_COMMIT
 WORKDIR /home/ghc/ghc
-RUN cd hadrian && cabal install hadrian
+RUN cd hadrian && cabal install hadrian fast-tags
 RUN ./boot && ./configure && hadrian -j --flavour=Quick
+RUN fast-tags -R compiler ghc libraries/base libraries/template-haskell/
