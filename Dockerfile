@@ -1,4 +1,5 @@
-FROM registry.gitlab.haskell.org/ghc/ci-images/x86_64-linux-deb10:9e4c540d9e4972a36291dfdf81f079f37d748890
+ARG GHC_DOCKER_REV
+FROM registry.gitlab.haskell.org/ghc/ci-images/x86_64-linux-deb10:$GHC_DOCKER_REV
 ARG GHC_COMMIT
 USER ghc
 ENV PATH=${PATH}:/home/ghc/.cabal/bin:/opt/ghc/9.2.2/bin
