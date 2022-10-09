@@ -1,7 +1,7 @@
 .PHONY: image run
 
-GHC_COMMIT:=$(shell sh ghc-commit.sh)
-GHC_DOCKER_REV:=$(shell sh ghc-docker-rev.sh)
+GHC_COMMIT:=$(shell ./ghc-commit.sh)
+GHC_DOCKER_REV:=$(shell ./ghc-docker-rev.sh)
 
 image:
 	@echo GHC_COMMIT=$(GHC_COMMIT)
