@@ -13,3 +13,6 @@ RUN hadrian -j --freeze1 test --only="T12919 haddockHtmlTest"
 RUN hadrian -j --freeze1 docs --docs=no-sphinx-pdfs
 RUN echo ":q" | hadrian/ghci
 RUN fast-tags -R compiler ghc libraries/base libraries/template-haskell/
+RUN sudo apt install -y zsh && git clone https://github.com/ohmyzsh/ohmyzsh.git /home/ghc/.oh-my-zsh && sudo usermod --shell $(which zsh) ghc
+COPY assets/.zshrc /home/ghc/.zshrc
+COPY assets/ghc-docker-dev.zsh-theme /home/ghc/.oh-my-zsh-custom/themes/ghc-docker-dev.zsh-theme
